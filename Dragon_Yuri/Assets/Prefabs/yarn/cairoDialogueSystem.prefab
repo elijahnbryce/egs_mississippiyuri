@@ -117,7 +117,7 @@ MonoBehaviour:
   fadeDownDuration: 0.1
   autoAdvance: 0
   autoAdvanceDelay: 1
-  typewriterStyle: 1
+  typewriterStyle: 0
   lettersPerSecond: 60
   wordsPerSecond: 10
   customTypewriter:
