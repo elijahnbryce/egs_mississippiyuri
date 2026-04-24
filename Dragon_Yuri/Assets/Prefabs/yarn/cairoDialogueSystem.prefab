@@ -835,7 +835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runner: {fileID: 8309902628685535410}
   presenter: {fileID: 2958262985454349548}
-  separateHurryUpAndAdvanceControls: 0
+  separateHurryUpAndAdvanceControls: 1
   multiAdvanceIsCancel: 0
   advanceRequestsBeforeCancellingLine: 2
   inputMode: 1
@@ -849,7 +849,7 @@ MonoBehaviour:
   hurryUpOptionsAxis: Jump
   cancelDialogueAxis: 
   hurryUpLineKeyCode: 0
-  nextLineKeyCode: 27
+  nextLineKeyCode: 13
   hurryUpOptionsKeyCode: 0
   cancelDialogueKeyCode: 0
 --- !u!1 &7262066351540048079
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 8020628925107869969}
   optionViewPrefab: {fileID: 2576261519635394347, guid: e605972137b0b4c1399ffb07beae9a9b, type: 3}
-  showsLastLine: 1
+  showsLastLine: 0
   lastLineText: {fileID: 8020628925673895294}
   lastLineContainer: {fileID: 0}
   lastLineCharacterNameText: {fileID: 0}
