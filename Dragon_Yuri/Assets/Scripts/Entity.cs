@@ -13,7 +13,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float speed = 1.0f, strength = 1.0f, defense = 1.0f;
 
     protected Rigidbody2D _rb;
-    public virtual void TakeDamage(float damage) => health -= damage;
+    public virtual void TakeDamage(float damage) => health -= damage / defense;
+
 
     protected virtual void Start()
     {
@@ -22,6 +23,6 @@ public class Entity : MonoBehaviour
 
     protected virtual void Move()
     {
-        _rb.linearVelocity = Vector2.up * speed * Time.deltaTime;
+        _rb.linearVelocity = speed * Time.deltaTime * Vector2.up;
     }
 }
