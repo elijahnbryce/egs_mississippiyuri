@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7fe3384910c14145a849327bcc4cfea, type: 3}
+  m_Name: Normal Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
+  type: 2
+  critical: 0
+  weaknessList: 00000000
+  advantageList: 00000000
+  wetList: {fileID: 11400000, guid: c88588ad26946214ca4b11f62b33676a, type: 2}
+  hotList: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
+  maxHealth: 2
+  speed: 1
+  strength: 2
+  defense: 2
+  sprite: 1
+  colour: {r: 1, g: 1, b: 1, a: 1}

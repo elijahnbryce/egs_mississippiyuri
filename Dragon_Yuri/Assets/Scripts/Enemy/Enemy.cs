@@ -1,6 +1,9 @@
+using Assets.Scripts.Enemy;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemy
@@ -13,50 +16,36 @@ namespace Assets.Scripts.Enemy
             get { return type; }
             private set
             {
-                if (type != value)
-                {
-                    SetType(value);
-                }
+                if (type != value) SetType(value); 
             }
         }
 
-        private Transform target;
-        private SpriteRenderer sr;
-        public void SetTarget(Entity target) => this.target = target.transform;
+        public float Dmg => strength;
 
-        public void SwitchType(EnemyType t) => Type = t;
+        private Transform target, activeSprite = null;
+        [SerializeField] private Transform spriteHolder;
+        [SerializeField] private HealthBar healthBar;
 
-        private void SetType(EnemyType t)
+        public Transform ActiveSprite
         {
-            // first time initialization
-            if (type == null)
+            get { return activeSprite; }
+            private set
             {
-                maxHealth = (int)t.maxHealth;
-                health = maxHealth; //full hp
+                if (value != ActiveSprite)
+                {
+                    value.gameObject.SetActive(true);
+                    activeSprite?.gameObject.SetActive(false);
+                    activeSprite = value;
+                }
             }
-            else
-            {
-                // Preserve % health on type switch
-                health = (health / maxHealth) * t.maxHealth;
-                maxHealth = (int)t.maxHealth;
-            }
-
-            speed = t.speed;
-            strength = t.strength;
-            defense = Mathf.Max(t.defense, 0.0001f); // safety
-
-            sr.sprite = t.sprite ?? sr.sprite;
-            sr.color = t.colour;
-
-            type = t;
-
-            Debug.Log($"Initialized Enemy: HP={health}/{maxHealth}");
         }
 
         protected override void Start()
         {
             base.Start();
-            sr = GetComponent<SpriteRenderer>();
+            RotateTowardsTarget();
+            spriteHolder = transform.GetChild(0);
+            ActiveSprite = spriteHolder.GetChild(0);
         }
 
         private void FixedUpdate()
@@ -69,6 +58,39 @@ namespace Assets.Scripts.Enemy
             RotateTowardsTarget(direction);
         }
 
+        public void Initialize(EnemyType t)
+        {
+            SwitchType(t);
+            health = maxHealth;
+            healthBar ??= GetComponentInChildren<HealthBar>();
+        }
+
+        public void SetTarget(Entity target) => this.target = target.transform;
+
+
+        public void SwitchType(EnemyType t) => Type = t;
+
+        private void SetType(EnemyType t)
+        {
+            health = (health / maxHealth) * t.maxHealth;
+            maxHealth = (int)t.maxHealth;
+            speed = t.speed;
+            strength = t.strength;
+            defense = t.defense;
+
+            ActiveSprite = spriteHolder.GetChild(t.sprite);
+            SetColour(t.colour);
+
+            type = t;
+        }
+
+        private void SetColour(Color c)
+        {
+            SpriteRenderer[] sprites = new SpriteRenderer[] {
+                activeSprite.GetChild(0).GetComponent<SpriteRenderer>(),
+                activeSprite.GetChild(1).GetComponent<SpriteRenderer>()
+            }; foreach (SpriteRenderer sr in sprites) sr.color = c;
+        }
 
         private void RotateTowardsTarget(Vector2 direction)
         {
@@ -78,7 +100,7 @@ namespace Assets.Scripts.Enemy
             _rb.MoveRotation(angle - 90f);
         }
 
-        protected void TakeDamage(float damage, EnemyType.Element element)
+        protected bool TakeDamage(float damage, EnemyType.Element element)
         {
             /* Apply type weaknesses to damage before deducting health */
 
@@ -89,26 +111,23 @@ namespace Assets.Scripts.Enemy
             damage *= Mathf.Pow(2, advantageCount);
             damage /= Mathf.Pow(2, weaknessCount);
 
-            TakeDamage(damage);
+            if (TakeDamage(damage))
+            {
+                healthBar.UpdateHealthBar(health / maxHealth);
+                return true;
+            }
+            return false;
         }
 
         protected void InteractWithElement(EnemyType.Element element) => Type = element switch {
-            EnemyType.Element.Water => type.wetList,
-            EnemyType.Element.Fire => type.wetList,
+            EnemyType.Element.Water => Type.wetList,
+            EnemyType.Element.Fire => Type.wetList,
             _ => Type
         };
 
-        public void HitWithProjectile(Object obj)
+        public void HitWithProjectile(Projectile projectile)
         {
             if (type.critical) return;
-
-            var projectile = obj as Assets.Scripts.Projectile;
-
-            if (projectile == null)
-            {
-                Debug.LogWarning("Projectile cast failed");
-                return;
-            }
 
             // Use first element if exists, otherwise Normal
             var element = projectile.elements.Count > 0
@@ -116,8 +135,11 @@ namespace Assets.Scripts.Enemy
                 : EnemyType.Element.Normal;
 
             TakeDamage(projectile.dmg, element);
+        }
 
-            Debug.Log($"Hit! Damage: {projectile.dmg}");
+        private void RotateTowardsTarget()
+        {
+            _rb.MoveRotation(Quaternion.LookRotation(target.position));
         }
     }
 }

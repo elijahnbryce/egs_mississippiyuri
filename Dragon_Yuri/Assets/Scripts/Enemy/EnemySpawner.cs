@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     public class EnemySpawnInfo
     {
         public EnemyType enemyType;   
-        public GameObject prefab;     // Must have Enemy component
         public int count;
     }
 
@@ -22,11 +21,15 @@ public class EnemySpawner : MonoBehaviour
         public float postWaveDelay = 3f;
     }
 
+    [Header("Prefab")]
+    public GameObject enemyPrefab;     // Enemy prefab
+
     [Header("Waves")]
     [SerializeField] private List<Wave> waves = new List<Wave>();
 
     [Header("Spawn Settings")]
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform spawnedParent;
 
     [Header("Target")]
     [SerializeField] private Entity target; // Player or base
@@ -40,8 +43,10 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         InitializeWaveUI();
-        StartCoroutine(SpawnWaves());
+        ProcWaveSpawner(); // delete when yarn setup
     }
+
+    public void ProcWaveSpawner() => StartCoroutine(SpawnWaves());
 
     private void InitializeWaveUI()
     {
@@ -51,9 +56,9 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log($"Total Waves: {waves.Count}");
     }
 
-    private IEnumerator SpawnWaves()
+    public IEnumerator SpawnWaves()
     {
-        while (currentWaveIndex < waves.Count)
+        if (currentWaveIndex < waves.Count)
         {
             UpdateCurrentWaveUI();
 
@@ -68,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("All waves complete");
+        else Debug.Log("All waves complete");
     }
 
     private void UpdateCurrentWaveUI()
@@ -99,15 +104,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, spawnedParent);
 
-        GameObject obj = Instantiate(info.prefab, spawnPoint.position, Quaternion.identity);
-
-        Enemy enemy = obj.GetComponent<Enemy>();
-
-        if (enemy != null)
+        if (obj.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.enabled = false; //stop from running
-
             StartCoroutine(InitializeEnemy(enemy, info));
         }
         else
@@ -137,18 +138,10 @@ public class EnemySpawner : MonoBehaviour
             yield break;
         }
 
-        
         enemy.SetTarget(target);
-
-       
         enemy.enabled = true;
-
-        
         yield return null;
-
-        
-        enemy.SwitchType(info.enemyType);
-
+        enemy.Initialize(info.enemyType);
         Debug.Log($"Enemy initialized: {info.enemyType.name}");
     }
 }
