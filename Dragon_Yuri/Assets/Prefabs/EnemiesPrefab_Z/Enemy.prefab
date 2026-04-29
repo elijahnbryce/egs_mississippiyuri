@@ -297,7 +297,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5780562361390766645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -338,12 +338,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 7a184148437294a7b8d96378a700727d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e91467e8ff1423468b5faade0df995d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 1.1}
+  m_Size: {x: 3.97, y: 3.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -413,8 +413,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
-    newSize: {x: 2.56, y: 1.1}
+    oldSize: {x: 3.97, y: 3.49}
+    newSize: {x: 3.97, y: 3.49}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -527,6 +527,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8832262331439259557}
     m_Modifications:
+    - target: {fileID: -4175949054563193081, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3005202
+      objectReference: {fileID: 0}
+    - target: {fileID: -4175949054563193081, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3616421
+      objectReference: {fileID: 0}
+    - target: {fileID: -4175949054563193081, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4175949054563193081, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.03820169
+      objectReference: {fileID: 0}
+    - target: {fileID: -4175949054563193081, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0025464594
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951392569484694602, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.224
+      objectReference: {fileID: 0}
     - target: {fileID: 2666554124502823896, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
       propertyPath: m_Name
       value: EnemyBasic
@@ -535,9 +559,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6893820907437171389, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Name
+      value: sprite
+      objectReference: {fileID: 0}
     - target: {fileID: 8108951553747750023, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718460420054189543, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e91467e8ff1423468b5faade0df995d, type: 3}
+    - target: {fileID: 8718460420054189543, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718460420054189543, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718460420054189543, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718460420054189543, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9200189167516107502, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -603,7 +651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666554124502823896, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7534289940391232015, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
       propertyPath: m_Enabled
