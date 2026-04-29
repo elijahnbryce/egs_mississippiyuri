@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
   type: 0
   critical: 0
-  weaknessList: 
-  advantageList: 
+  weaknessList: 02000000
+  advantageList: 01000000
   wetList: {fileID: 0}
-  hotList: {fileID: 0}
-  maxHealth: 0
-  speed: 0
-  strength: 0
-  defense: 0
-  sprite: {fileID: 0}
-  colour: {r: 0, g: 0, b: 0, a: 0}
+  hotList: {fileID: 11400000, guid: 4b041eb1368fa73469748f1ba0601fb3, type: 2}
+  maxHealth: 2
+  speed: 2
+  strength: 2
+  defense: 1
+  sprite: 0
+  colour: {r: 0.7798742, g: 0.25095588, b: 0, a: 0}

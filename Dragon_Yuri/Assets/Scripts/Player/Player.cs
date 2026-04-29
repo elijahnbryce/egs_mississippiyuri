@@ -5,9 +5,13 @@ public class Player : Entity
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out var enemy))
+        if (collision.CompareTag("Enemy"))
         {
-            TakeDamage(enemy.Dmg);
+            var enemy = collision.GetComponentInParent<Enemy>();
+            if (null != enemy)
+            {
+                TakeDamage(enemy.Dmg);
+            }
         }
     }
 }
