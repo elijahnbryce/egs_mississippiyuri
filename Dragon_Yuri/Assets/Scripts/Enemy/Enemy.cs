@@ -24,9 +24,15 @@ namespace Assets.Scripts.Enemy
         private SpriteRenderer sr;
         public void SetTarget(Entity target) => this.target = target.transform;
 
+<<<<<<< HEAD
         public void SwitchType(EnemyType t) => Type = t;
 
         private void SetType(EnemyType t)
+=======
+        private Transform target, activeSprite = null;
+        [SerializeField] private Transform spriteHolder;
+        public Transform ActiveSprite
+>>>>>>> parent of 5e6d47c (Merge branch 'main' of https://github.com/elijahnbryce/egs_mississippiyuri)
         {
             // first time initialization
             if (type == null)
@@ -69,6 +75,37 @@ namespace Assets.Scripts.Enemy
             RotateTowardsTarget(direction);
         }
 
+<<<<<<< HEAD
+=======
+        public void Initialize(EnemyType t) => SwitchType(t);
+
+        public void SetTarget(Entity target) => this.target = target.transform;
+
+
+        public void SwitchType(EnemyType t) => Type = t;
+
+        private void SetType(EnemyType t)
+        {
+            health = (health / maxHealth) * t.maxHealth;
+            maxHealth = (int)t.maxHealth;
+            speed = t.speed;
+            strength = t.strength;
+            defense = t.defense;
+
+            ActiveSprite = spriteHolder.GetChild(t.sprite);
+            SetColour(t.colour);
+
+            type = t;
+        }
+
+        private void SetColour(Color c)
+        {
+            SpriteRenderer[] sprites = new SpriteRenderer[] {
+                activeSprite.GetChild(0).GetComponent<SpriteRenderer>(),
+                activeSprite.GetChild(1).GetComponent<SpriteRenderer>()
+            }; foreach (SpriteRenderer sr in sprites) sr.color = c;
+        }
+>>>>>>> parent of 5e6d47c (Merge branch 'main' of https://github.com/elijahnbryce/egs_mississippiyuri)
 
         private void RotateTowardsTarget(Vector2 direction)
         {
@@ -114,8 +151,12 @@ namespace Assets.Scripts.Enemy
             var element = projectile.elements.Count > 0
                 ? projectile.elements[0]
                 : EnemyType.Element.Normal;
+<<<<<<< HEAD
 
             TakeDamage(projectile.dmg, element);
+=======
+        }
+>>>>>>> parent of 5e6d47c (Merge branch 'main' of https://github.com/elijahnbryce/egs_mississippiyuri)
 
             Debug.Log($"Hit! Damage: {projectile.dmg}");
         }

@@ -24,9 +24,15 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+<<<<<<< HEAD
             if (collision.CompareTag("Enemy"))
             {
                 collision.GetComponent<Enemy.Enemy>().HitWithProjectile(this);
+=======
+            if (collision.TryGetComponent<Enemy.Enemy>(out var enemy))
+            {
+                enemy.HitWithProjectile(this);
+>>>>>>> parent of 5e6d47c (Merge branch 'main' of https://github.com/elijahnbryce/egs_mississippiyuri)
             }
         }
 
