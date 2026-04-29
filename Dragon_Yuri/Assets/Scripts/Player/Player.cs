@@ -1,13 +1,13 @@
+using Assets.Scripts.Enemy;
 using UnityEngine;
 
 public class Player : Entity
 {
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Rotate character
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        if (horizontal != 0f) {
-            _rb.angularVelocity = (-horizontal * speed * 40);
+        if (collision.TryGetComponent<Enemy>(out var enemy))
+        {
+            TakeDamage(enemy.Dmg);
         }
     }
 }
