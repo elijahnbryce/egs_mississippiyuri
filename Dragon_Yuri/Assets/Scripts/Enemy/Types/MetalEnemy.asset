@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: MetalEnemy
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
   type: 0
-  critical: 0
+  critical: 1
   weaknessList: 
   advantageList: 
   wetList: {fileID: 0}
   hotList: {fileID: 0}
-  maxHealth: 10
+  maxHealth: 5
   speed: 1
-  strength: 1
-  defense: 1
-  sprite: {fileID: 0}
-  colour: {r: 0.9725491, g: 0.9725491, b: 1, a: 1}
+  strength: 2
+  defense: 2
+  sprite: 0
+  colour: {r: 0.39703718, g: 0.39703718, b: 0.45911938, a: 1}
