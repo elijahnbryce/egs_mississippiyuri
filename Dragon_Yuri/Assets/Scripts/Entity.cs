@@ -13,18 +13,19 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float speed = 1.0f, strength = 1.0f, defense = 1.0f;
 
     protected Rigidbody2D _rb;
-    public virtual bool TakeDamage(float damage)
-    {
-        Debug.Log($"{name} took {damage} damage. Health: {health}");
+        
 
+
+    public virtual void TakeDamage(float damage)
+    {
         health -= damage / defense;
+
+        Debug.Log($"{name} took damage. Health: {health}");
 
         if (health <= 0)
         {
             Die();
-            return false;
         }
-        return true;
     }
 
     protected virtual void Die()

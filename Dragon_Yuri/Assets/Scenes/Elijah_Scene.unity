@@ -1842,8 +1842,6 @@ MonoBehaviour:
   speed: 1
   strength: 1
   defense: 1
-  spriteHolder: {fileID: 0}
-  healthBar: {fileID: 0}
 --- !u!61 &807201407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3249,22 +3247,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826c80e936018f04ab63f8f12af0a7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefab: {fileID: 5780562361390766645, guid: bb58145985c4cba448d4ee63bd06e478, type: 3}
   waves:
   - enemies:
     - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
-      count: 2
-    - enemyType: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
-      count: 2
-    - enemyType: {fileID: 11400000, guid: c88588ad26946214ca4b11f62b33676a, type: 2}
-      count: 2
-    - enemyType: {fileID: 11400000, guid: cb1cc80a61a12864f8de968e104b2960, type: 2}
-      count: 2
+      prefab: {fileID: 2666554124502823896, guid: 2d057aa34937eab4597b466544657214, type: 3}
+      count: 5
     spawnInterval: 0.2
     postWaveDelay: 3
   - enemies:
-    - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
-      count: 30
+    - enemyType: {fileID: 11400000, guid: 428bb55c40686fb47b776e1991796c3a, type: 2}
+      prefab: {fileID: 2666554124502823896, guid: 5c98a83c12312f24a9fb00dc7f51a707, type: 3}
+      count: 2
     spawnInterval: 1
     postWaveDelay: 10
   - enemies:
@@ -3290,7 +3283,6 @@ MonoBehaviour:
   - {fileID: 1314285381}
   - {fileID: 1990907080}
   - {fileID: 2041497444}
-  spawnedParent: {fileID: 1581766791}
   target: {fileID: 785218264}
   currentWaveText: {fileID: 1757309048}
   totalWaveText: {fileID: 356487946}
@@ -3541,37 +3533,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1294804907}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1581766790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1581766791}
-  m_Layer: 0
-  m_Name: EnemiesSpawned
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1581766791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581766790}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669457611
 GameObject:
@@ -4959,4 +4920,3 @@ SceneRoots:
   - {fileID: 262220961}
   - {fileID: 427974930}
   - {fileID: 1109994814}
-  - {fileID: 1581766791}
