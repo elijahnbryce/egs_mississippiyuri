@@ -1,0 +1,27 @@
+title: tutorial_start
+position: 4,-76
+---
+1: Mom said she'd be right back and to wait here.
+
+2: And it's been like 5 days! We can't just wait!
+
+1: It's only been 1, and what else are going to do?
+
+2: Well I can go and look for her! You can stay here if you want.
+
+1: What if something tries to attack me or the eggs?
+
+2: Like what?
+
+1: Like that!
+
+<<jump tutorial_2>>
+===
+title: tutorial_2
+position: 1,68
+---
+Use spacebar to defend your siblings.
+Let them die and its the end of the line.
+As twin dragons you are you are connected, your actions are never truly yours alone.
+Though when working together your doubly as strong.
+===
