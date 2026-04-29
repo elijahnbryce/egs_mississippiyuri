@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemy
@@ -23,6 +24,8 @@ namespace Assets.Scripts.Enemy
 
         private Transform target, activeSprite = null;
         [SerializeField] private Transform spriteHolder;
+        [SerializeField] private HealthBar healthBar;
+
         public Transform ActiveSprite
         {
             get { return activeSprite; }
@@ -55,7 +58,12 @@ namespace Assets.Scripts.Enemy
             RotateTowardsTarget(direction);
         }
 
-        public void Initialize(EnemyType t) => SwitchType(t);
+        public void Initialize(EnemyType t)
+        {
+            SwitchType(t);
+            health = maxHealth;
+            healthBar ??= GetComponentInChildren<HealthBar>();
+        }
 
         public void SetTarget(Entity target) => this.target = target.transform;
 
@@ -92,7 +100,7 @@ namespace Assets.Scripts.Enemy
             _rb.MoveRotation(angle - 90f);
         }
 
-        protected void TakeDamage(float damage, EnemyType.Element element)
+        protected bool TakeDamage(float damage, EnemyType.Element element)
         {
             /* Apply type weaknesses to damage before deducting health */
 
@@ -103,7 +111,12 @@ namespace Assets.Scripts.Enemy
             damage *= Mathf.Pow(2, advantageCount);
             damage /= Mathf.Pow(2, weaknessCount);
 
-            TakeDamage(damage);
+            if (TakeDamage(damage))
+            {
+                healthBar.UpdateHealthBar(health / maxHealth);
+                return true;
+            }
+            return false;
         }
 
         protected void InteractWithElement(EnemyType.Element element) => Type = element switch {
@@ -120,6 +133,8 @@ namespace Assets.Scripts.Enemy
             var element = projectile.elements.Count > 0
                 ? projectile.elements[0]
                 : EnemyType.Element.Normal;
+
+            TakeDamage(projectile.dmg, element);
         }
 
         private void RotateTowardsTarget()

@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Settings")]
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform spawnedParent;
 
     [Header("Target")]
     [SerializeField] private Entity target; // Player or base
@@ -102,15 +103,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, spawnedParent);
 
-        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-
-        Enemy enemy = obj.GetComponent<Enemy>();
-
-        if (enemy != null)
+        if (obj.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.enabled = false; //stop from running
-
             StartCoroutine(InitializeEnemy(enemy, info));
         }
         else

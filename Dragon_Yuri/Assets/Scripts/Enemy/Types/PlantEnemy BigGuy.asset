@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7fe3384910c14145a849327bcc4cfea, type: 3}
-  m_Name: PlantEnemy
+  m_Name: PlantEnemy BigGuy
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
   type: 0
   critical: 0
   weaknessList: 01000000
   advantageList: 02000000
-  wetList: {fileID: 11400000, guid: bd91184f94ca6d945bab03dd89a545bc, type: 2}
+  wetList: {fileID: 0}
   hotList: {fileID: 0}
-  maxHealth: 6
-  speed: 1
-  strength: 2
-  defense: 4
-  sprite: 1
-  colour: {r: 0, g: 0.53333336, b: 0.26365143, a: 0}
+  maxHealth: 3
+  speed: 2
+  strength: 1
+  defense: 2
+  sprite: 0
+  colour: {r: 0, g: 0.5345911, b: 0.08469022, a: 0}
