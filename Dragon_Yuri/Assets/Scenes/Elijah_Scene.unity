@@ -3241,7 +3241,7 @@ MonoBehaviour:
     - enemyType: {fileID: 11400000, guid: cb1cc80a61a12864f8de968e104b2960, type: 2}
       count: 2
     spawnInterval: 0.2
-    postWaveDelay: 3
+    postWaveDelay: 30
   - enemies:
     - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
       count: 30
