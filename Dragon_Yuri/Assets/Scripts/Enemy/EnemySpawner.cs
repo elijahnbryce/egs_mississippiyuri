@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public class EnemySpawnInfo
     {
         public EnemyType enemyType;   
+        public GameObject prefab;     // Must have Enemy component
         public int count;
     }
 
@@ -21,15 +22,11 @@ public class EnemySpawner : MonoBehaviour
         public float postWaveDelay = 3f;
     }
 
-    [Header("Prefab")]
-    public GameObject enemyPrefab;     // Enemy prefab
-
     [Header("Waves")]
     [SerializeField] private List<Wave> waves = new List<Wave>();
 
     [Header("Spawn Settings")]
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private Transform spawnedParent;
 
     [Header("Target")]
     [SerializeField] private Entity target; // Player or base
@@ -43,10 +40,8 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         InitializeWaveUI();
-        ProcWaveSpawner(); // delete when yarn setup
+        StartCoroutine(SpawnWaves());
     }
-
-    public void ProcWaveSpawner() => StartCoroutine(SpawnWaves());
 
     private void InitializeWaveUI()
     {
@@ -56,9 +51,9 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log($"Total Waves: {waves.Count}");
     }
 
-    public IEnumerator SpawnWaves()
+    private IEnumerator SpawnWaves()
     {
-        if (currentWaveIndex < waves.Count)
+        while (currentWaveIndex < waves.Count)
         {
             UpdateCurrentWaveUI();
 
@@ -73,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        else Debug.Log("All waves complete");
+        Debug.Log("All waves complete");
     }
 
     private void UpdateCurrentWaveUI()
@@ -104,11 +99,15 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, spawnedParent);
 
-        if (obj.TryGetComponent<Enemy>(out Enemy enemy))
+        GameObject obj = Instantiate(info.prefab, spawnPoint.position, Quaternion.identity);
+
+        Enemy enemy = obj.GetComponent<Enemy>();
+
+        if (enemy != null)
         {
             enemy.enabled = false; //stop from running
+
             StartCoroutine(InitializeEnemy(enemy, info));
         }
         else
@@ -138,10 +137,18 @@ public class EnemySpawner : MonoBehaviour
             yield break;
         }
 
+        
         enemy.SetTarget(target);
+
+       
         enemy.enabled = true;
+
+        
         yield return null;
-        enemy.Initialize(info.enemyType);
+
+        
+        enemy.SwitchType(info.enemyType);
+
         Debug.Log($"Enemy initialized: {info.enemyType.name}");
     }
 }
