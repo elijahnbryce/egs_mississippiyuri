@@ -28,14 +28,29 @@ namespace Assets.Scripts.Enemy
 
         private void SetType(EnemyType t)
         {
-            health = (health / maxHealth) * t.maxHealth;
-            maxHealth = (int) t.maxHealth;
+            // first time initialization
+            if (type == null)
+            {
+                maxHealth = (int)t.maxHealth;
+                health = maxHealth; //full hp
+            }
+            else
+            {
+                // Preserve % health on type switch
+                health = (health / maxHealth) * t.maxHealth;
+                maxHealth = (int)t.maxHealth;
+            }
+
             speed = t.speed;
             strength = t.strength;
-            defense = t.defense;
+            defense = Mathf.Max(t.defense, 0.0001f); // safety
+
             sr.sprite = t.sprite ?? sr.sprite;
             sr.color = t.colour;
+
             type = t;
+
+            Debug.Log($"Initialized Enemy: HP={health}/{maxHealth}");
         }
 
         protected override void Start()

@@ -89,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
     private void SpawnEnemy(EnemySpawnInfo info)
     {
         if (spawnPoints.Length == 0)
