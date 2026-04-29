@@ -1,5 +1,3 @@
 ﻿<Solution>
-  <Project Path="YarnSpinner.Unity.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="YarnSpinner.Unity.Editor.csproj" />
 </Solution>
