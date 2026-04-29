@@ -18,9 +18,9 @@ MonoBehaviour:
   advantageList: 00000000
   wetList: {fileID: 0}
   hotList: {fileID: 0}
-  maxHealth: 2
-  speed: 2
-  strength: 0
-  defense: 0
-  sprite: {fileID: 0}
-  colour: {r: 0, g: 0, b: 0, a: 0}
+  maxHealth: 5
+  speed: 1
+  strength: 1
+  defense: 1
+  sprite: {fileID: 21300000, guid: 48f24bb86f008479ab5e103ef81a0b49, type: 3}
+  colour: {r: 0.0059407153, g: 0.4198113, b: 0.122977875, a: 1}
