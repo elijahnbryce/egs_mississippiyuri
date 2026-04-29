@@ -1,16 +1,153 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Assets.Scripts.Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [System.Serializable]
+    public class EnemySpawnInfo
     {
-        
+        public EnemyType enemyType;   
+        public GameObject prefab;     // Must have Enemy component
+        public int count;
     }
 
-    // Update is called once per frame
-    void Update()
+    [System.Serializable]
+    public class Wave
     {
-        
+        public List<EnemySpawnInfo> enemies = new List<EnemySpawnInfo>();
+        public float spawnInterval = 1f;
+        public float postWaveDelay = 3f;
+    }
+
+    [Header("Waves")]
+    [SerializeField] private List<Wave> waves = new List<Wave>();
+
+    [Header("Spawn Settings")]
+    [SerializeField] private Transform[] spawnPoints;
+
+    [Header("Target")]
+    [SerializeField] private Entity target; // Player or base
+
+    [Header("UI - Wave Display")]
+    [SerializeField] private TextMeshProUGUI currentWaveText;
+    [SerializeField] private TextMeshProUGUI totalWaveText;
+
+    private int currentWaveIndex = 0;
+
+    private void Start()
+    {
+        InitializeWaveUI();
+        StartCoroutine(SpawnWaves());
+    }
+
+    private void InitializeWaveUI()
+    {
+        if (totalWaveText != null)
+            totalWaveText.text = waves.Count.ToString();
+
+        Debug.Log($"Total Waves: {waves.Count}");
+    }
+
+    private IEnumerator SpawnWaves()
+    {
+        while (currentWaveIndex < waves.Count)
+        {
+            UpdateCurrentWaveUI();
+
+            Wave wave = waves[currentWaveIndex];
+
+            Debug.Log($"Wave {currentWaveIndex + 1} Started");
+
+            yield return StartCoroutine(SpawnWave(wave));
+
+            yield return new WaitForSeconds(wave.postWaveDelay);
+
+            currentWaveIndex++;
+        }
+
+        Debug.Log("All waves complete");
+    }
+
+    private void UpdateCurrentWaveUI()
+    {
+        if (currentWaveText != null)
+            currentWaveText.text = (currentWaveIndex + 1).ToString();
+    }
+
+    private IEnumerator SpawnWave(Wave wave)
+    {
+        foreach (EnemySpawnInfo enemyInfo in wave.enemies)
+        {
+            for (int i = 0; i < enemyInfo.count; i++)
+            {
+                SpawnEnemy(enemyInfo);
+                yield return new WaitForSeconds(wave.spawnInterval);
+            }
+        }
+    }
+
+    private void SpawnEnemy(EnemySpawnInfo info)
+    {
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogWarning("No spawn points!");
+            return;
+        }
+
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+        GameObject obj = Instantiate(info.prefab, spawnPoint.position, Quaternion.identity);
+
+        Enemy enemy = obj.GetComponent<Enemy>();
+
+        if (enemy != null)
+        {
+            enemy.enabled = false; //stop from running
+
+            StartCoroutine(InitializeEnemy(enemy, info));
+        }
+        else
+        {
+            Debug.LogError("Enemy component missing!");
+        }
+    }
+
+
+    private IEnumerator InitializeEnemy(Enemy enemy, EnemySpawnInfo info)
+    {
+        if (enemy == null)
+        {
+            Debug.LogError("Enemy is NULL");
+            yield break;
+        }
+
+        if (target == null)
+        {
+            Debug.LogError("Target is NULL!");
+            yield break;
+        }
+
+        if (info.enemyType == null)
+        {
+            Debug.LogError("EnemyType is NULL!");
+            yield break;
+        }
+
+        // 1. Set target FIRST (needed for Start)
+        enemy.SetTarget(target);
+
+        // 2. Enable so Start() runs and assigns sr
+        enemy.enabled = true;
+
+        // 3. Wait one frame so Start() finishes
+        yield return null;
+
+        // 4. Now it's SAFE to use SpriteRenderer
+        enemy.SwitchType(info.enemyType);
+
+        Debug.Log($"Enemy initialized: {info.enemyType.name}");
     }
 }

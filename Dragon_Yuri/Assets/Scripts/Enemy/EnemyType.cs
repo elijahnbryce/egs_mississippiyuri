@@ -23,9 +23,10 @@ namespace Assets.Scripts.Enemy
 		public List<Element> weaknessList = new(), advantageList = new();
 		
 		[Tooltip("State Transition: the next stage in elemental transition")]
-		public EnemyType wetList = new(), hotList = new();
+        public EnemyType wetList;
+        public EnemyType hotList; //new in scriptable object error
 
-		[Header("Stats")]
+        [Header("Stats")]
         public float maxHealth = 10f, speed = 1f, strength = 1f, defense = 1f;
 
 		[Header("Characteristics")]

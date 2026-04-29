@@ -38,9 +38,7 @@ public class OrbitingPlayerController : MonoBehaviour
         HandleShooting();
     }
 
-    // -----------------------------
-    // START POSITION FIX
-    // -----------------------------
+    // Start Position Fix
     private void InitializePosition()
     {
         currentAngle = startAngleOffset;
@@ -48,9 +46,8 @@ public class OrbitingPlayerController : MonoBehaviour
         ApplyOrbitPositionAndRotation();
     }
 
-    // -----------------------------
-    // MOVEMENT
-    // -----------------------------
+    // Mvement
+
     private void HandleMovement()
     {
         float input = GetInput();
@@ -60,9 +57,9 @@ public class OrbitingPlayerController : MonoBehaviour
         ApplyOrbitPositionAndRotation();
     }
 
-    // -----------------------------
-    // INPUT PER DRAGON TYPE
-    // -----------------------------
+
+    // Input per dragon type
+
     private float GetInput()
     {
         if (Keyboard.current == null)
@@ -81,7 +78,7 @@ public class OrbitingPlayerController : MonoBehaviour
                 return 0f;
 
             case ElementType.Fire:
-                // ONLY ARROW controls (NO WASD CHECKS EXIST HERE)
+                // ONLY arrow controls
                 if (Keyboard.current.leftArrowKey.isPressed)
                     return 1f;
 
@@ -94,9 +91,8 @@ public class OrbitingPlayerController : MonoBehaviour
         return 0f;
     }
 
-    // -----------------------------
     // APPLY ORBIT POSITION
-    // -----------------------------
+
     private void ApplyOrbitPositionAndRotation()
     {
         float rad = currentAngle * Mathf.Deg2Rad;
@@ -112,9 +108,9 @@ public class OrbitingPlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    // -----------------------------
+
     // SHOOTING
-    // -----------------------------
+
     private void HandleShooting()
     {
         if (Keyboard.current == null)
@@ -130,11 +126,11 @@ public class OrbitingPlayerController : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        /*Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
         if (rb != null)
         {
             rb.linearVelocity = firePoint.right * projectileSpeed;
-        }
+        }*/
     }
 }

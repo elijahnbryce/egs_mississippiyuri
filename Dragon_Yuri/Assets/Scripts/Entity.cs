@@ -13,16 +13,34 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float speed = 1.0f, strength = 1.0f, defense = 1.0f;
 
     protected Rigidbody2D _rb;
-    public virtual void TakeDamage(float damage) => health -= damage / defense;
+        
 
+
+    public virtual void TakeDamage(float damage)
+    {
+        health -= damage / defense;
+
+        Debug.Log($"{name} took damage. Health: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    protected virtual void Die()
+    {
+        Debug.Log($"{name} died");
+        Destroy(gameObject);
+    }
 
     protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Move()
+    protected virtual void Move(Vector2 direction)
     {
-        _rb.linearVelocity = speed * Time.deltaTime * Vector2.up;
+        _rb.linearVelocity = direction * speed;
     }
 }

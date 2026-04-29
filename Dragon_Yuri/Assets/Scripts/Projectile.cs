@@ -17,6 +17,11 @@ namespace Assets.Scripts
 
         protected Rigidbody2D _rb;
 
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Enemy"))
@@ -32,7 +37,7 @@ namespace Assets.Scripts
 
         protected virtual void Move()
         {
-            _rb.linearVelocity = spd * Time.deltaTime * Vector2.up;
+            _rb.linearVelocity = transform.up * spd;
         }
 
         private void Rotate(float rot)

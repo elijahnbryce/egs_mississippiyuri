@@ -42,21 +42,25 @@ namespace Assets.Scripts.Enemy
         {
             base.Start();
             sr = GetComponent<SpriteRenderer>();
-            RotateTowardsTarget();
         }
 
         private void FixedUpdate()
         {
-            if (target != null)
-            {
-                Move();
-            }
+            if (target == null) return;
+
+            Vector2 direction = (target.position - transform.position).normalized;
+
+            Move(direction);
+            RotateTowardsTarget(direction);
         }
 
 
-        private void RotateTowardsTarget()
+        private void RotateTowardsTarget(Vector2 direction)
         {
-            _rb.MoveRotation(Quaternion.LookRotation(target.position));
+            if (direction == Vector2.zero) return;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            _rb.MoveRotation(angle - 90f);
         }
 
         protected void TakeDamage(float damage, EnemyType.Element element)
@@ -79,10 +83,26 @@ namespace Assets.Scripts.Enemy
             _ => Type
         };
 
-        public void HitWithProjectile (Object obj) // switch with projectile class when made
+        public void HitWithProjectile(Object obj)
         {
-            if (type.critical) return; // && projectile.elements.Count() >= 2) TakeDamage(projectile.damage);
-            else TakeDamage(1f); // TakeDamage(projectile.dmg, projectile.elements[0]);
+            if (type.critical) return;
+
+            var projectile = obj as Assets.Scripts.Projectile;
+
+            if (projectile == null)
+            {
+                Debug.LogWarning("Projectile cast failed");
+                return;
+            }
+
+            // Use first element if exists, otherwise Normal
+            var element = projectile.elements.Count > 0
+                ? projectile.elements[0]
+                : EnemyType.Element.Normal;
+
+            TakeDamage(projectile.dmg, element);
+
+            Debug.Log($"Hit! Damage: {projectile.dmg}");
         }
     }
 }
