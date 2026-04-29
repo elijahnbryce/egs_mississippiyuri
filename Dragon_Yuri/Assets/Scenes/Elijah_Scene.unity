@@ -2093,7 +2093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
       propertyPath: startNode
-      value: test
+      value: tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
       propertyPath: yarnProject
@@ -2102,6 +2102,18 @@ PrefabInstance:
     - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
       propertyPath: runSelectedOptionAsLine
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
+      propertyPath: onNodeComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
+      propertyPath: onNodeComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
+      propertyPath: onNodeComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

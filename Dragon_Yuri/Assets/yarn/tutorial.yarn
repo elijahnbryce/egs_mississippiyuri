@@ -1,0 +1,18 @@
+﻿title: tutorial
+---
+Mist: Mom said she'd be right back and to wait here
+Char: And it's been like 5 days! We can't just wait
+Mist: It's only been 1, and what else are we going to do?
+Char: Well I can go and look for her! You can stay here if you want...
+Mist: What if something tries to attack me or the eggs?
+Char: Like what?
+Mist: Like that!
+<<jump tutorial2>>
+===
+
+title: tutorial2
+---
+Use w/d or <-/->
+Use spacebar to attack
+As twin dragons you are you are connected, even through the things you do.
+===

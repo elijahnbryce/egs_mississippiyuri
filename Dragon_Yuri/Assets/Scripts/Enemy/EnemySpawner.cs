@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log($"Total Waves: {waves.Count}");
     }
 
-    private IEnumerator SpawnWaves()
+    public IEnumerator SpawnWaves()
     {
         while (currentWaveIndex < waves.Count)
         {
