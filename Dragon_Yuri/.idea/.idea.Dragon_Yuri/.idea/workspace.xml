@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="d5d7d45f-0841-4f43-8831-1401834affe8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Elijah_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Elijah_Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
@@ -12,6 +13,9 @@
       <change beforePath="$PROJECT_DIR$/Assets/yarn/test.yarn" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/yarn/test.yarn.meta" beforeDir="false" />
     </list>
+=======
+    <list default="true" id="d5d7d45f-0841-4f43-8831-1401834affe8" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +24,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/yarn/DialogueTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+>>>>>>> Stashed changes
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -40,7 +52,11 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+<<<<<<< Updated upstream
     "git-widget-placeholder": "cairopleasedontbreakgit",
+=======
+    "git-widget-placeholder": "main",
+>>>>>>> Stashed changes
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -98,7 +114,16 @@
       <workItem from="1777420436972" duration="25000" />
       <workItem from="1777420479717" duration="821000" />
       <workItem from="1777422874926" duration="128000" />
+<<<<<<< Updated upstream
       <workItem from="1777428027674" duration="1071000" />
+=======
+      <workItem from="1777428027674" duration="4701000" />
+      <workItem from="1777475011444" duration="47000" />
+      <workItem from="1777475439189" duration="37000" />
+      <workItem from="1777475581202" duration="32000" />
+      <workItem from="1777475697998" duration="909000" />
+      <workItem from="1777479407987" duration="727000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
