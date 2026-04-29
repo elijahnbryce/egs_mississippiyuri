@@ -24,9 +24,9 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Enemy"))
+            if (collision.TryGetComponent<Enemy.Enemy>(out var enemy))
             {
-                collision.GetComponent<Enemy.Enemy>().HitWithProjectile(this);
+                enemy.HitWithProjectile(this);
             }
         }
 
