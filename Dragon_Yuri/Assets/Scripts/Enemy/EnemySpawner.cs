@@ -136,16 +136,16 @@ public class EnemySpawner : MonoBehaviour
             yield break;
         }
 
-        // 1. Set target FIRST (needed for Start)
+        
         enemy.SetTarget(target);
 
-        // 2. Enable so Start() runs and assigns sr
+       
         enemy.enabled = true;
 
-        // 3. Wait one frame so Start() finishes
+        
         yield return null;
 
-        // 4. Now it's SAFE to use SpriteRenderer
+        
         enemy.SwitchType(info.enemyType);
 
         Debug.Log($"Enemy initialized: {info.enemyType.name}");

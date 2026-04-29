@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7fe3384910c14145a849327bcc4cfea, type: 3}
   m_Name: FireEnemy
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
-  type: 0
+  type: 1
   critical: 0
-  weaknessList: 
-  advantageList: 
+  weaknessList: 02000000
+  advantageList: 01000000
   wetList: {fileID: 0}
   hotList: {fileID: 0}
-  maxHealth: 0
-  speed: 0
+  maxHealth: 2
+  speed: 2
   strength: 0
   defense: 0
   sprite: {fileID: 0}
