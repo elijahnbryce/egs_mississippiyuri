@@ -79,7 +79,7 @@ public class EnemySpawner : MonoBehaviour
     private void UpdateCurrentWaveUI()
     {
         if (currentWaveText != null)
-            currentWaveText.text = (currentWaveIndex + 0).ToString();
+            currentWaveText.text = (currentWaveIndex +1).ToString();
     }
 
     private IEnumerator SpawnWave(Wave wave)

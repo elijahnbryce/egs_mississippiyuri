@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d5d7d45f-0841-4f43-8831-1401834affe8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Dragon_Yuri/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Dragon_Yuri/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/yarn/cairoDialogueSystem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/yarn/cairoDialogueSystem.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Elijah_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Elijah_Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/art/font/NewRocker-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/art/font/NewRocker-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/art/font/YsabeauInfant-VariableFont_wght SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/art/font/YsabeauInfant-VariableFont_wght SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/yarn/tutorial.yarn" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yarn/tutorial.yarn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/yarn/tutorial.yarn.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yarn/tutorial.yarn.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@4504839d03f7/Rider/Editor/RiderScriptEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -102,7 +106,7 @@
       <workItem from="1777420479717" duration="821000" />
       <workItem from="1777422874926" duration="128000" />
       <workItem from="1777428027674" duration="1071000" />
-      <workItem from="1777484940506" duration="1684000" />
+      <workItem from="1777484940506" duration="3394000" />
     </task>
     <servers />
   </component>

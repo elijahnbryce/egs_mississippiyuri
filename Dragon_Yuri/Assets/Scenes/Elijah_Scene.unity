@@ -3297,24 +3297,22 @@ MonoBehaviour:
   - enemies:
     - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
       count: 2
-    - enemyType: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
-      count: 2
-    - enemyType: {fileID: 11400000, guid: c88588ad26946214ca4b11f62b33676a, type: 2}
-      count: 2
-    - enemyType: {fileID: 11400000, guid: cb1cc80a61a12864f8de968e104b2960, type: 2}
-      count: 2
     spawnInterval: 0.2
-    postWaveDelay: 3
+    postWaveDelay: 15
   - enemies:
     - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
-      count: 30
-    spawnInterval: 1
-    postWaveDelay: 10
+      count: 5
+    spawnInterval: 0.5
+    postWaveDelay: 25
   - enemies:
     - enemyType: {fileID: 11400000, guid: c88588ad26946214ca4b11f62b33676a, type: 2}
       count: 2
+    - enemyType: {fileID: 11400000, guid: 428bb55c40686fb47b776e1991796c3a, type: 2}
+      count: 2
+    - enemyType: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
+      count: 2
     spawnInterval: 1
-    postWaveDelay: 10
+    postWaveDelay: 40
   spawnPoints:
   - {fileID: 1415442307}
   - {fileID: 1344254639}
