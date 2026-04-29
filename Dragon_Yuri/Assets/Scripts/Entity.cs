@@ -13,9 +13,6 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float speed = 1.0f, strength = 1.0f, defense = 1.0f;
 
     protected Rigidbody2D _rb;
-        
-
-
     public virtual void TakeDamage(float damage)
     {
         health -= damage / defense;

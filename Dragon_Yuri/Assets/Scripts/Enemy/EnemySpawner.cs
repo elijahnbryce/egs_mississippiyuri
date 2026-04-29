@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     public class EnemySpawnInfo
     {
         public EnemyType enemyType;   
-        public GameObject prefab;     // Must have Enemy component
         public int count;
     }
 
@@ -21,6 +20,9 @@ public class EnemySpawner : MonoBehaviour
         public float spawnInterval = 1f;
         public float postWaveDelay = 3f;
     }
+
+    [Header("Prefab")]
+    public GameObject enemyPrefab;     // Enemy prefab
 
     [Header("Waves")]
     [SerializeField] private List<Wave> waves = new List<Wave>();
@@ -40,8 +42,10 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         InitializeWaveUI();
-        StartCoroutine(SpawnWaves());
+        ProcWaveSpawner(); // delete when yarn setup
     }
+
+    public void ProcWaveSpawner() => StartCoroutine(SpawnWaves());
 
     private void InitializeWaveUI()
     {
@@ -53,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator SpawnWaves()
     {
-        while (currentWaveIndex < waves.Count)
+        if (currentWaveIndex < waves.Count)
         {
             UpdateCurrentWaveUI();
 
@@ -68,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex++;
         }
 
-        Debug.Log("All waves complete");
+        else Debug.Log("All waves complete");
     }
 
     private void UpdateCurrentWaveUI()
@@ -99,7 +103,7 @@ public class EnemySpawner : MonoBehaviour
 
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        GameObject obj = Instantiate(info.prefab, spawnPoint.position, Quaternion.identity);
+        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
         Enemy enemy = obj.GetComponent<Enemy>();
 
@@ -136,18 +140,10 @@ public class EnemySpawner : MonoBehaviour
             yield break;
         }
 
-        
         enemy.SetTarget(target);
-
-       
         enemy.enabled = true;
-
-        
         yield return null;
-
-        
-        enemy.SwitchType(info.enemyType);
-
+        enemy.Initialize(info.enemyType);
         Debug.Log($"Enemy initialized: {info.enemyType.name}");
     }
 }

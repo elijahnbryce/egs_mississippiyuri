@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Assets.Scripts.Enemy;
 
 
 /// Spawns enemies in waves spawning each enemy after x interval (fast spawns or slow spawns). Each wave has its own spawn timing for each enemy (uniform) and cooldown afterwards before the next one auto starts. to burst enemies, set a low interval
@@ -10,8 +11,7 @@ public class EnemySpawner_Z : MonoBehaviour
     [System.Serializable]
     public class EnemySpawnInfo
     {
-        public EnemyData enemyData;   // ScriptableObject data
-        public GameObject prefab;     // Enemy prefab
+        public EnemyType enemyData;   // ScriptableObject data
         public int count;             // How many to spawn of that enemy
     }
 
@@ -22,6 +22,9 @@ public class EnemySpawner_Z : MonoBehaviour
         public float spawnInterval = 1f;   // time between each spawn (Uniform)
         public float postWaveDelay = 3f;   // delay after wave finishes before next one begins
     }
+
+    [Header("Prefab")]
+    public GameObject enemyPrefab;     // Enemy prefab
 
     [Header("Waves")]
     [SerializeField] private List<Wave> waves = new List<Wave>();
@@ -124,14 +127,10 @@ public class EnemySpawner_Z : MonoBehaviour
 
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        GameObject enemyObj = Instantiate(info.prefab, spawnPoint.position, Quaternion.identity);
+        GameObject enemyObj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
-        Enemy_Z enemy = enemyObj.GetComponent<Enemy_Z>();
-
-        if (enemy != null)
-        {
-            enemy.Initialize(info.enemyData);
-        }
+        Enemy enemy = enemyObj.GetComponent<Enemy>();
+        enemy.Initialize(info.enemyData);
     }
 
 
