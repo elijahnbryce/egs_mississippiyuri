@@ -100,11 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-<<<<<<< HEAD
         GameObject obj = Instantiate(info.prefab, spawnPoint.position, Quaternion.identity);
-=======
-        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
->>>>>>> parent of 5e6d47c (Merge branch 'main' of https://github.com/elijahnbryce/egs_mississippiyuri)
 
         Enemy enemy = obj.GetComponent<Enemy>();
 
