@@ -1808,6 +1808,7 @@ MonoBehaviour:
   speed: 1
   strength: 1
   defense: 1
+  spriteHolder: {fileID: 0}
 --- !u!61 &807201407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2100,8 +2101,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7545569452688597077, guid: 03dc115af5fa0d84fa5d3f757d8953f5, type: 3}
     - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
+      propertyPath: allowOptionFallthrough
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
       propertyPath: runSelectedOptionAsLine
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 1ea0559a431430446a3f45ce2eb8f2a9, type: 3}
       propertyPath: onNodeComplete.m_PersistentCalls.m_Calls.Array.size
@@ -3191,16 +3196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826c80e936018f04ab63f8f12af0a7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  enemyPrefab: {fileID: 0}
   waves:
   - enemies:
     - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
-      prefab: {fileID: 2666554124502823896, guid: 2d057aa34937eab4597b466544657214, type: 3}
       count: 2
     spawnInterval: 0.2
     postWaveDelay: 3
   - enemies:
     - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
-      prefab: {fileID: 2666554124502823896, guid: 2d057aa34937eab4597b466544657214, type: 3}
       count: 30
     spawnInterval: 1
     postWaveDelay: 33
