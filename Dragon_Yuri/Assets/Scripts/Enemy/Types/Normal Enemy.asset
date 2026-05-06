@@ -19,10 +19,10 @@ MonoBehaviour:
   wetList: {fileID: 11400000, guid: c88588ad26946214ca4b11f62b33676a, type: 2}
   hotList: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
   maxHealth: 2
-  speed: 1
+  speed: 10
   strength: 1
   defense: 1
   sprite: 1
   colour: {r: 1, g: 1, b: 1, a: 1}
-  spriteSize: 1
+  spriteSize: 5
   _sprite: {fileID: -547972682548885412, guid: 412ff6e253217144bab05ebcc004d7a4, type: 3}

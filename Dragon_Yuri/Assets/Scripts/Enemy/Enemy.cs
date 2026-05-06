@@ -168,9 +168,21 @@ namespace Assets.Scripts.Enemy
             TakeDamage(projectile.dmg, element);
         }
 
-        protected override void Die() {
+        public override void Die() {
             Debug.Log("Death handled by ENEMY script");
             EnemySpawner._Instance.DespawnEnemy(this);
         }
+
+
+        public void Kill()
+        {
+            Debug.Log($"[Enemy] Kill() called on {gameObject.name}");
+            Die();
+        }
+
+
     }
+
+
+
 }
