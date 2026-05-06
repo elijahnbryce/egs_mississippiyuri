@@ -391,6 +391,10 @@ PrefabInstance:
       propertyPath: orbitCenter
       value: 
       objectReference: {fileID: 785218267}
+    - target: {fileID: 1632159156284361204, guid: 2c655cc1d0881ab4dbfb0a5eeadf63a6, type: 3}
+      propertyPath: startAngleOffset
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 1750754166521511228, guid: 2c655cc1d0881ab4dbfb0a5eeadf63a6, type: 3}
       propertyPath: m_Name
       value: Player W
@@ -1434,7 +1438,13 @@ MonoBehaviour:
     spawnInterval: 0
     postWaveDelay: 0
   - enemies:
-    - enemyType: {fileID: 11400000, guid: ee709ec856d954d42bd4179620cfb9d4, type: 2}
+    - enemyType: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
+      count: 1
+    - enemyType: {fileID: 11400000, guid: cb1cc80a61a12864f8de968e104b2960, type: 2}
+      count: 1
+    - enemyType: {fileID: 11400000, guid: 15ba93fd4747d784b80f578208a26a59, type: 2}
+      count: 1
+    - enemyType: {fileID: 11400000, guid: c88588ad26946214ca4b11f62b33676a, type: 2}
       count: 1
     spawnInterval: 0.1
     postWaveDelay: 15
