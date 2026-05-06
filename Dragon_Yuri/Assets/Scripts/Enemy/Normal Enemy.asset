@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7fe3384910c14145a849327bcc4cfea, type: 3}
   m_Name: Normal Enemy
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
-  type: 2
+  type: 0
   critical: 0
   weaknessList: 00000000
   advantageList: 00000000
@@ -22,5 +22,5 @@ MonoBehaviour:
   speed: 1
   strength: 1
   defense: 1
-  sprite: {fileID: 21300000, guid: 7a184148437294a7b8d96378a700727d, type: 3}
+  sprite: 0
   colour: {r: 0.20790708, g: 1, b: 0, a: 1}
