@@ -1,199 +1,99 @@
+using NUnit.Framework.Interfaces;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class OrbitingPlayerController : MonoBehaviour
 {
-    public enum ElementType
+    [SerializeField] private OrbittingPlayer firePlayer, waterPlayer;
+    [SerializeField] private GameObject critjectilePrefab;
+    [SerializeField, Range(0, 180)] private float degreeMargin = 45;
+    private float dotThreshold;
+
+    private void Reset()
     {
-        Fire,
-        Water
+        // Reset is called when the component is first added or manually reset in Inspector
+        var children = GetComponentsInChildren<OrbittingPlayer>();
+
+        if (children.Length >= 2)
+        {
+            firePlayer = children[0];
+            waterPlayer = children[1];
+        }
     }
 
-    [Header("Element")]
-    [SerializeField] private ElementType element;
-
-    [Header("Orbit Settings")]
-    [SerializeField] private Transform orbitCenter;
-    [SerializeField] private float orbitRadius = 5f;
-    [SerializeField] private float rotationSpeed = 180f;
-
-    [Tooltip("Starting angle offset so players don't overlap (e.g. 0 and 180)")]
-    [SerializeField] private float startAngleOffset = 0f;
-
-    [Header("Shooting Settings")]
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
-
-    [Header("Ammo Settings")]
-    [SerializeField] private int maxAmmo = 10;
-    [SerializeField] private float regenDelay = 2f; // seconds after last shot
-    [SerializeField] private float regenRate = 1f;  // ammo per second
-
-    [Header("UI")]
-    [SerializeField] private Slider leftSlider;
-    [SerializeField] private Slider rightSlider;
-
-    private float currentAngle;
-    private float currentAmmo = 10;
-    private float lastShotTime;
-
-
-    private void Start()
+    private void Awake()
     {
-        currentAmmo = maxAmmo;
-        InitializePosition();
-        UpdateAmmoUI();
+        Assert.IsNotNull(firePlayer, $"FirePlayer is missing on {name}!");
+        Assert.IsNotNull(waterPlayer, $"WaterPlayer is missing on {name}!");
+    }
+
+    private void OnValidate()
+    {
+        dotThreshold = Mathf.Cos(degreeMargin * Mathf.Deg2Rad);
     }
 
     private void Update()
     {
-        HandleMovement();
+        GetInput();
         HandleShooting();
-        HandleAmmoRegen();
     }
 
-    // Start Position Fix
-    private void InitializePosition()
-    {
-        currentAngle = startAngleOffset;
-
-        ApplyOrbitPositionAndRotation();
-    }
-
-    // Mvement
-
-    private void HandleMovement()
-    {
-        float input = GetInput();
-
-        currentAngle += input * rotationSpeed * Time.deltaTime;
-
-        ApplyOrbitPositionAndRotation();
-    }
-
-
-    // Input per dragon type
-
-    private float GetInput()
-    {
-        if (Keyboard.current == null)
-            return 0f;
-
-        switch (element)
-        {
-            case ElementType.Water:
-                // ONLY WASD controls
-                if (Keyboard.current.aKey.isPressed)
-                    return 1f;
-
-                if (Keyboard.current.dKey.isPressed)
-                    return -1f;
-
-                return 0f;
-
-            case ElementType.Fire:
-                // ONLY arrow controls
-                if (Keyboard.current.leftArrowKey.isPressed)
-                    return 1f;
-
-                if (Keyboard.current.rightArrowKey.isPressed)
-                    return -1f;
-
-                return 0f;
-        }
-
-        return 0f;
-    }
-
-    // APPLY ORBIT POSITION
-
-    private void ApplyOrbitPositionAndRotation()
-    {
-        float rad = currentAngle * Mathf.Deg2Rad;
-
-        Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * orbitRadius;
-
-        transform.position = orbitCenter.position + (Vector3)offset;
-
-        Vector2 outward = ((Vector2)transform.position - (Vector2)orbitCenter.position).normalized;
-
-        float angle = Mathf.Atan2(outward.y, outward.x) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
-    }
-
-
-    // SHOOTING
+    // Shooting 
 
     private void HandleShooting()
     {
         if (Keyboard.current == null)
             return;
 
+
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            TryShoot();
+
+            bool crit = IsFacingSameDirection(waterPlayer.transform, firePlayer.transform);
+            bool a = waterPlayer.Psh.TryShoot(!crit);
+            bool b = firePlayer.Psh.TryShoot(!crit);
+
+            if (crit && a && b)
+            {
+                Vector3 spawnPos = (waterPlayer.FirePoint.position + firePlayer.FirePoint.position) / 2f;
+                Vector2 middleDir = (waterPlayer.transform.up + firePlayer.transform.up).normalized;
+                Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.up, middleDir);
+                GameObject proj = Instantiate(critjectilePrefab, spawnPos, spawnRotation);
+            }
         }
     }
 
-    private void TryShoot()
+    // Input per dragon type
+
+    private void GetInput()
     {
-        if (currentAmmo <= 0f)
-        {
-            Debug.Log("No ammo!");
-            return;
-        }
-
-        Shoot();
-        currentAmmo--;
-        lastShotTime = Time.time;
-
-        UpdateAmmoUI();
-    }
-
-    private void Shoot()
-    {
-        Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-    }
-
-    // ---------------- AMMO REGEN ----------------
-
-    private void HandleAmmoRegen()
-    {
-        if (currentAmmo >= maxAmmo)
+        if (Keyboard.current == null)
             return;
 
-        // only regen if enough time has passed since last shot
-        if (Time.time < lastShotTime + regenDelay)
-            return;
+        // WASD controls
+        if (Keyboard.current.aKey.isPressed)
+            waterPlayer.HandleMovement(1f);
 
-        currentAmmo += regenRate * Time.deltaTime;
-        currentAmmo = Mathf.Min(currentAmmo, maxAmmo);
+        if (Keyboard.current.dKey.isPressed)
+            waterPlayer.HandleMovement(-1f);
 
-        UpdateAmmoUI();
+        // arrow controls
+        if (Keyboard.current.leftArrowKey.isPressed)
+            firePlayer.HandleMovement(1f);
+
+        if (Keyboard.current.rightArrowKey.isPressed)
+            firePlayer.HandleMovement(-1f);
+
     }
 
-    // ---------------- UI ----------------
-
-    private void UpdateAmmoUI()
+    public bool IsFacingSameDirection(Transform objA, Transform objB)
     {
-        float t = (float)currentAmmo / maxAmmo;
+        Vector2 dirA = objA.right;
+        Vector2 dirB = objB.right;
 
-        // Left slider fills from left --> center
-        if (leftSlider != null)
-        {
-            leftSlider.minValue = 0f;
-            leftSlider.maxValue = 1f;
-            leftSlider.value = t;
-        }
+        float dot = Vector2.Dot(dirA, dirB);
 
-        // Right slider fills from right --> center
-        if (rightSlider != null)
-        {
-            rightSlider.minValue = 0f;
-            rightSlider.maxValue = 1f;
-            rightSlider.value = t;
-        }
+        return dot >= dotThreshold;
     }
 }

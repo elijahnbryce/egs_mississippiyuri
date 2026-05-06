@@ -127,7 +127,18 @@ namespace Assets.Scripts.Enemy
 
         public void HitWithProjectile(Projectile projectile)
         {
-            if (type.critical) return;
+            if (type.critical && projectile.elements.Count > 1)
+            {
+                TakeDamage(projectile.dmg);
+                /*
+                 * int count = projectile.elements.Count;
+                 * foreach (var element in projectile.elements){
+                 *  TakeDamage(projectile.dmg / count, element);
+                 * }
+                 */
+                return;
+            }
+
 
             // Use first element if exists, otherwise Normal
             var element = projectile.elements.Count > 0
