@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using Assets.Scripts.Enemy;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -109,7 +110,11 @@ public class EnemySpawner : MonoBehaviour
             OnWaveComplete?.Invoke();
         }
 
-        else Debug.Log("All waves complete");
+        else
+        {
+            Debug.Log("All waves complete");
+            WinGame();
+        }
     }
 
     private void UpdateCurrentWaveUI()
@@ -187,5 +192,11 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Enemy died handled in GameManage " +  enemy.name);
         currentEnemies.Remove(enemy);
         Destroy(enemy.gameObject);
+    }
+    void WinGame()
+    {
+        Debug.Log("Game Won");
+        SceneManager.LoadScene("WinScene");
+        
     }
 }
