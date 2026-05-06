@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7fe3384910c14145a849327bcc4cfea, type: 3}
-  m_Name: MagmaEnemy BigGuy
+  m_Name: WaterEnemy
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemy.EnemyType
   type: 0
   critical: 0
-  weaknessList: 02000000
-  advantageList: 01000000
+  weaknessList: 
+  advantageList: 0200000002000000
   wetList: {fileID: 0}
   hotList: {fileID: 0}
   maxHealth: 2
-  speed: 3
-  strength: 3
+  speed: 2
+  strength: 2
   defense: 2
-  sprite: 1
-  colour: {r: 0.899371, g: 0.3390608, b: 0, a: 0}
-  spriteSize: 2
-  _sprite: {fileID: -5751504506248534322, guid: 4ea4cfedd60b16e40b04c059d0e1b359, type: 3}
+  sprite: 0
+  colour: {r: 0.9725491, g: 0.9725491, b: 1, a: 1}
+  spriteSize: 1
+  _sprite: {fileID: -4350246913137973463, guid: 2341de79d9edc8f4a89038f73149f9da, type: 3}

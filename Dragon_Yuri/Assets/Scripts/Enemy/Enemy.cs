@@ -45,7 +45,13 @@ namespace Assets.Scripts.Enemy
             base.Start();
             RotateTowardsTarget();
             spriteHolder = transform.GetChild(0);
-            ActiveSprite = spriteHolder.GetChild(0);
+            //ActiveSprite = spriteHolder.GetChild(0);
+
+            activeSprite = null;
+            foreach (Transform t in spriteHolder)
+            {
+                t.gameObject.SetActive(false);
+            }
         }
 
         private void FixedUpdate()
@@ -78,8 +84,17 @@ namespace Assets.Scripts.Enemy
             strength = t.strength;
             defense = t.defense;
 
-            ActiveSprite = spriteHolder.GetChild(t.sprite);
-            SetColour(t.colour);
+            if (null == t._sprite)
+            {
+                ActiveSprite = spriteHolder.GetChild(t.sprite);
+                SetColour(t.colour);
+            }
+            else
+            {
+                ActiveSprite = spriteHolder.GetChild(2);
+                ActiveSprite.GetComponent<SpriteRenderer>().sprite = t._sprite;
+                ActiveSprite.transform.localScale = Vector3.one * t.spriteSize;
+            }
 
             type = t;
         }
