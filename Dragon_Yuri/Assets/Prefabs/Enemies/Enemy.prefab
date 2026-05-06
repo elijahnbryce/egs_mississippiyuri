@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 8697444579927214409}
   - component: {fileID: 1887275962795343923}
   - component: {fileID: 5721215426919178426}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 7226655170034095573}
   - component: {fileID: 5513070946572262671}
   - component: {fileID: 5398796615812326814}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 1686035998214373419}
   - component: {fileID: 1284340040990346957}
   - component: {fileID: 5606228588779849016}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,19 @@ PrefabInstance:
       value: EnemyBasic
       objectReference: {fileID: 0}
     - target: {fileID: 2666554124502823896, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666554124502823896, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827953001365795505, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443035456503393658, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6893820907437171389, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
@@ -750,6 +762,10 @@ PrefabInstance:
     - target: {fileID: 8718460420054189543, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926650432043128055, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9200189167516107502, guid: 022dd12a9adda90459f5c73e7cebecfa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -815,11 +831,31 @@ PrefabInstance:
       value: EnemyBasicBig
       objectReference: {fileID: 0}
     - target: {fileID: 2666554124502823896, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666554124502823896, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827953001365795505, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443035456503393658, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893820907437171389, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534289940391232015, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926650432043128055, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9200189167516107502, guid: b4b397abf75ee1b41a67cc6a777f8118, type: 3}
