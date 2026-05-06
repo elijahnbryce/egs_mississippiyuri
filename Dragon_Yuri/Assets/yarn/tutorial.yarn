@@ -8,7 +8,7 @@ Char: Well I can go and look for her! You can stay here if you want...
 Mist: What if something tries to attack me or the eggs?
 Char: Like what?
 Mist: Like that!
-<<jump tutorial2>>
+//<<jump tutorial2>>
 ===
 
 title: tutorial2
@@ -17,26 +17,26 @@ position: 28,217
 Use w/d or <-/->
 Use spacebar to attack
 As twin dragons you are you are connected, even through the things you do.
-<<wait 10>>
-<<jump Wave1>>
+//<<wait 10>>
+//<<jump Wave2>>
 ===
-title: Wave1
+title: Wave2
 position: 55,387
 ---
 Char: We need to get out of here! We can't do this!
 Mist: We can't leave the eggs! As long as we conserve stamina we can do this.
-<<wait 15>>
-<<jump Wave2>>
+//<<wait 15>>
+//<<jump Wave3>>
 ===
-title: Wave2
+title: Wave3
 position: 58,603
 ---
 Char: So do you think mom is coming back soon...
 Mist: Just focus. We need to work to our strengths.
-<<wait 20>>
-<<jump Wave3>>
+//<<wait 20>>
+//<<jump Wave4>>
 ===
-title: Wave3
+title: Wave4
 position: 70,790
 ---
 Mist: Some of these monsters are elemental. They are either weaker to fire or water.

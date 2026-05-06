@@ -18,7 +18,7 @@ MonoBehaviour:
   advantageList: 01000000
   wetList: {fileID: 0}
   hotList: {fileID: 11400000, guid: 4b041eb1368fa73469748f1ba0601fb3, type: 2}
-  maxHealth: 2
+  maxHealth: 1
   speed: 2
   strength: 2
   defense: 1

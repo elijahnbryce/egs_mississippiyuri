@@ -92,6 +92,11 @@ namespace Assets.Scripts.Enemy
             }; foreach (SpriteRenderer sr in sprites) sr.color = c;
         }
 
+        private void RotateTowardsTarget()
+        {
+            _rb.MoveRotation(Quaternion.LookRotation(target.position));
+        }
+
         private void RotateTowardsTarget(Vector2 direction)
         {
             if (direction == Vector2.zero) return;
@@ -127,7 +132,18 @@ namespace Assets.Scripts.Enemy
 
         public void HitWithProjectile(Projectile projectile)
         {
-            if (type.critical) return;
+            if (type.critical && projectile.elements.Count > 1)
+            {
+                TakeDamage(projectile.dmg);
+                /*
+                 * int count = projectile.elements.Count;
+                 * foreach (var element in projectile.elements){
+                 *  TakeDamage(projectile.dmg / count, element);
+                 * }
+                 */
+                return;
+            }
+
 
             // Use first element if exists, otherwise Normal
             var element = projectile.elements.Count > 0
@@ -137,9 +153,9 @@ namespace Assets.Scripts.Enemy
             TakeDamage(projectile.dmg, element);
         }
 
-        private void RotateTowardsTarget()
-        {
-            _rb.MoveRotation(Quaternion.LookRotation(target.position));
+        protected override void Die() {
+            Debug.Log("Death handled by ENEMY script");
+            EnemySpawner._Instance.DespawnEnemy(this);
         }
     }
 }
