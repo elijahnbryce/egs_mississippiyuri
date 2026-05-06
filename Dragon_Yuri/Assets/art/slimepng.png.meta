@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 020ce0f3b7146c84fa51000d0c214e62
+guid: 1bc04a4c69de82547abb1269a465204e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 534203977406049907
-    second: smallnormalenemy_0
+      213: -6698141352421659808
+    second: slimepng_0
+  - first:
+      213: -5743511992948000181
+    second: slimepng_1
+  - first:
+      213: 7653689111220225606
+    second: slimepng_2
+  - first:
+      213: -3574872114819718730
+    second: slimepng_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,19 +106,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: smallnormalenemy_0
+      name: slimepng_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 126
-        width: 180
-        height: 126
+        x: 5
+        y: 92
+        width: 231
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37e63e6efafd96700800000000000000
-      internalID: 534203977406049907
+      spriteID: 06b6d81adeb6b03a0800000000000000
+      internalID: -6698141352421659808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimepng_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 270
+        width: 53
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4a7329d542fa40b0800000000000000
+      internalID: -5743511992948000181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimepng_2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 278
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6468e8712bd573a60800000000000000
+      internalID: 7653689111220225606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slimepng_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 29
+        width: 127
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1a8b680c0836ec0800000000000000
+      internalID: -3574872114819718730
       vertices: []
       indices: 
       edges: []
@@ -151,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      smallnormalenemy_0: 534203977406049907
+      slimepng_0: -6698141352421659808
+      slimepng_1: -5743511992948000181
+      slimepng_2: 7653689111220225606
+      slimepng_3: -3574872114819718730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
