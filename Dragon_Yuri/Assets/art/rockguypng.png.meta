@@ -179,9 +179,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 75
-        y: 198
-        width: 270
-        height: 236
+        y: 199
+        width: 310
+        height: 262
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,6 +280,28 @@ TextureImporter:
       bones: []
       spriteID: 470b7c11897bf2f70800000000000000
       internalID: 9164745630483460212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rockguypng_7
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 314
+        width: 31
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf18870ce0ab2414e99b2d428d2d9569
+      internalID: 1431458732
       vertices: []
       indices: 
       edges: []
@@ -4178,6 +4200,7 @@ TextureImporter:
       rockguypng_4: -480727379707236984
       rockguypng_5: -2403724079338617990
       rockguypng_6: 9164745630483460212
+      rockguypng_7: 1431458732
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

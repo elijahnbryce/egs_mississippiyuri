@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 1bc04a4c69de82547abb1269a465204e
+guid: 063052481d129184eba0e599d421d400
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6698141352421659808
-    second: slimepng_0
+      213: -3461243551570363541
+    second: IMG_0367_0
   - first:
-      213: -5743511992948000181
-    second: slimepng_1
-  - first:
-      213: 7653689111220225606
-    second: slimepng_2
-  - first:
-      213: -3574872114819718730
-    second: slimepng_3
+      213: 4628155195978523185
+    second: IMG_0367_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,89 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slimepng_0
+      name: IMG_0367_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 97
-        width: 231
-        height: 210
+        x: 71
+        y: 213
+        width: 106
+        height: 93
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06b6d81adeb6b03a0800000000000000
-      internalID: -6698141352421659808
+      spriteID: b6b798b045137ffc0800000000000000
+      internalID: -3461243551570363541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slimepng_1
+      name: IMG_0367_1
       rect:
         serializedVersion: 2
-        x: 147
-        y: 270
-        width: 53
-        height: 38
+        x: 75
+        y: 2
+        width: 246
+        height: 332
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4a7329d542fa40b0800000000000000
-      internalID: -5743511992948000181
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slimepng_2
-      rect:
-        serializedVersion: 2
-        x: 348
-        y: 278
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6468e8712bd573a60800000000000000
-      internalID: 7653689111220225606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: slimepng_3
-      rect:
-        serializedVersion: 2
-        x: 218
-        y: 17
-        width: 127
-        height: 146
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b1a8b680c0836ec0800000000000000
-      internalID: -3574872114819718730
+      spriteID: 132ada531a28a3040800000000000000
+      internalID: 4628155195978523185
       vertices: []
       indices: 
       edges: []
@@ -213,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 968cc7f02f33d8f42bdfedc97e6681bd
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      slimepng_0: -6698141352421659808
-      slimepng_1: -5743511992948000181
-      slimepng_2: 7653689111220225606
-      slimepng_3: -3574872114819718730
+      IMG_0367_0: -3461243551570363541
+      IMG_0367_1: 4628155195978523185
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
