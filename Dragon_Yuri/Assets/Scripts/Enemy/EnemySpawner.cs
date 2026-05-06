@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 using Assets.Scripts.Enemy;
 
@@ -21,6 +22,9 @@ public class EnemySpawner : MonoBehaviour
         public float postWaveDelay = 3f;
     }
 
+    public static EnemySpawner _Instance;
+    public UnityEvent OnWaveComplete;
+
     [Header("Prefab")]
     public GameObject enemyPrefab;     // Enemy prefab
 
@@ -39,14 +43,42 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalWaveText;
 
     private int currentWaveIndex = 0;
+    private List<Enemy> currentEnemies = new();
+    public List<Enemy> CurrentEnemies => currentEnemies;
+    public bool WaveCompleted => currentEnemies.Count <= 0;
+
+    private void Awake()
+    {
+        if (null == _Instance) _Instance = this;
+        else Destroy(gameObject);
+    }
+
+    //private void OnEnable()
+    //{
+    //    OnWaveComplete.AddListener(ProcYarnSpinner);
+    //}
+
+    //private void OnDisable()
+    //{
+    //    OnWaveComplete.RemoveListener(ProcYarnSpinner);
+    //}
 
     private void Start()
     {
         InitializeWaveUI();
-        ProcWaveSpawner(); // delete when yarn setup
     }
 
-    public void ProcWaveSpawner() => StartCoroutine(SpawnWaves());
+    public void ProcWaveSpawner()
+    {
+        Debug.Log("Yarn Spinner Called ProcWaveSpanwer() " + currentWaveIndex);
+        StartCoroutine(SpawnWaves());
+    }
+
+    public void ProcYarnSpinner()
+    {
+        Debug.Log("Enemy Spawner Called Start Dialogue() " + currentWaveIndex);
+        GameManager._Instance.PlayDialogue(currentWaveIndex);
+    }
 
     private void InitializeWaveUI()
     {
@@ -68,9 +100,13 @@ public class EnemySpawner : MonoBehaviour
 
             yield return StartCoroutine(SpawnWave(wave));
 
+            yield return new WaitUntil(() => WaveCompleted);
+
             yield return new WaitForSeconds(wave.postWaveDelay);
 
             currentWaveIndex++;
+
+            OnWaveComplete?.Invoke();
         }
 
         else Debug.Log("All waves complete");
@@ -110,6 +146,7 @@ public class EnemySpawner : MonoBehaviour
         {
             enemy.enabled = false; //stop from running
             StartCoroutine(InitializeEnemy(enemy, info));
+            currentEnemies.Add(enemy);
         }
         else
         {
@@ -143,5 +180,12 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
         enemy.Initialize(info.enemyType);
         Debug.Log($"Enemy initialized: {info.enemyType.name}");
+    }
+
+    public void DespawnEnemy(Enemy enemy)
+    {
+        Debug.Log("Enemy died handled in GameManage " +  enemy.name);
+        currentEnemies.Remove(enemy);
+        Destroy(enemy.gameObject);
     }
 }
