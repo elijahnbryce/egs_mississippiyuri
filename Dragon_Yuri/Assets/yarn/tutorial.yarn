@@ -8,7 +8,7 @@ Char: Well I can go and look for her! You can stay here if you want...
 Mist: What if something tries to attack me or the eggs?
 Char: Like what?
 Mist: Like that!
-//<<jump tutorial2>>
+<<jump tutorial2>>
 ===
 
 title: tutorial2
