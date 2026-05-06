@@ -32,14 +32,55 @@ title: Wave3
 position: 58,603
 ---
 Char: So do you think mom is coming back soon...
-Mist: Just focus. We need to work to our strengths.
+Mist: Right now is not the time! We need to focus.
+Char: But like, what if there's a really strong one?
+Mist: Then we work to our strengths. We're fire and water, we balance each other.
 //<<wait 20>>
 //<<jump Wave4>>
 ===
 title: Wave4
 position: 70,790
 ---
-Mist: Some of these monsters are elemental. They are either weaker to fire or water.
-Char: What if there's one that isn't weak?
+Char: So some are elemental monsters... But what if there's one that isn't weak to either fire or water?
 Mist: Uh, I guess we both hit it.
+===
+title: Wave5
+position: 52,957
+---
+Char: This is kinda fun!
+Mist: Totally... Trying not to do die is so fun...
+===
+title: Wave6
+position: 83,1120
+---
+Char: C'mon! Not fun?
+Char: We're dragons! The most powerful beings of the aether!
+Mist: Now who told you that?
+===
+title: Wave7
+position: 80,1291
+---
+Char: Mom's bedtime stories are all about dragons. Old and wise but far and few between.
+Mist: Do you really believe that?
+===
+title: Wave8
+position: 64,1455
+---
+Mist: If what mom says is true, that means there's not a lot of dragons around.
+Mist: Don't you think there's a reason for that?
+Char: Uhhh... power scaling?
+===
+title: Wave9
+position: 51,1613
+---
+Char: Well maybe your right...
+Mist: These monsters seem drawn to untapped power...
+Char: So that's why they want the eggs!
+===
+title: Wave10
+position:
+---
+Char: I really don't want to be stuck here forever. I'm getting tired.
+Mist: And that's why they keep coming.
+Mist: They're weak but they're trying to outlast us.
 ===
