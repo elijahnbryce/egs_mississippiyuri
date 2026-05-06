@@ -9861,7 +9861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207661531503919542}
-  - component: {fileID: 257989461952941499}
+  - component: {fileID: 6371231086466197723}
   - component: {fileID: 2362322017709233561}
   - component: {fileID: 6058370226492987050}
   m_Layer: 6
@@ -9887,7 +9887,7 @@ Transform:
   - {fileID: 3265762392401458746}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &257989461952941499
+--- !u!114 &6371231086466197723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9896,14 +9896,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2089853634966284722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b1ad7e4f9b5ec4aabc4695ffec6ffc, type: 3}
+  m_Script: {fileID: 11500000, guid: ffd33eefd6325d2448a61de541a17a98, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 10
-  lifetime: 3
-  damage: 10
-  element: 0
-  ultraProjectilePrefab: {fileID: 2089853634966284722, guid: 02de1408ac135324b8699ffb46258b43, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Projectile
+  elements: 02000000
+  dmg: 1
+  spd: 10
+  dur: 3
 --- !u!50 &2362322017709233561
 Rigidbody2D:
   serializedVersion: 5

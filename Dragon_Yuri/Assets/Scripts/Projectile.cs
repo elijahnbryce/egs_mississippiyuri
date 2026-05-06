@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         [Header("Stats")]
         public float dmg = 1.0f;
-        [SerializeField] protected float spd = 1.0f;
+        [SerializeField] protected float spd = 10f, dur = 3f;
 
         protected Rigidbody2D _rb;
 
@@ -31,17 +31,19 @@ namespace Assets.Scripts
                 {
                     enemy.HitWithProjectile(this);
                 }
+                Destroy(gameObject);
             }
         }
 
-        protected void FixedUpdate()
+        protected void Start()
         {
             Move();
+            Destroy(gameObject, dur);
         }
 
         protected virtual void Move()
         {
-            _rb.linearVelocity = transform.up * spd;
+            _rb.linearVelocity = transform.right * spd;
         }
 
         private void Rotate(float rot)
@@ -49,11 +51,10 @@ namespace Assets.Scripts
             _rb.MoveRotation(rot);
         }
 
-        public void Rotate(Vector2 targ)
+        public void RotateToTarget(Vector2 targ)
         {
             Vector2 direction = targ - _rb.position;
-            //  subtract 90 degrees bc sprite forward is top
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Rotate(angle);
         }
     }
