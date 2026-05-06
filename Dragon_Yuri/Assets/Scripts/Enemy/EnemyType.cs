@@ -32,5 +32,7 @@ namespace Assets.Scripts.Enemy
 		[Header("Characteristics")]
 		public int sprite = 0;
 		public Color colour = Color.ghostWhite;
+        public int spriteSize = 1;
+        public Sprite _sprite = null;
     }
 }
