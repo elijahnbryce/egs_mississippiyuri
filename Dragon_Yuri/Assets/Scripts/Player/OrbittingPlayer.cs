@@ -1,6 +1,4 @@
-using Assets.Scripts.Enemy;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Element = Assets.Scripts.Enemy.EnemyType.Element;
 
 [RequireComponent(typeof(PlayerShooting))]
@@ -29,16 +27,18 @@ public class OrbittingPlayer : Player
     protected override void Start()
     {
         base.Start();
-        InitializePosition();
         psh = GetComponent<PlayerShooting>();
+        InitializePosition();
     }
 
     // Start Position Fix
     private void InitializePosition()
     {
         currentAngle = startAngleOffset;
-
-        ApplyOrbitPositionAndRotation();
+        float rad = currentAngle * Mathf.Deg2Rad;
+        Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * orbitRadius;
+        transform.position = orbitCenter.position + (Vector3)offset;
+        ApplyOrbitPhysics();
     }
 
     // Mvement
@@ -47,7 +47,7 @@ public class OrbittingPlayer : Player
     {
         currentAngle += input * rotationSpeed * Time.deltaTime;
 
-        ApplyOrbitPositionAndRotation();
+        ApplyOrbitPhysics();
     }
 
     // APPLY ORBIT POSITION
@@ -65,5 +65,18 @@ public class OrbittingPlayer : Player
         float angle = Mathf.Atan2(outward.y, outward.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    private void ApplyOrbitPhysics()
+    {
+        float rad = currentAngle * Mathf.Deg2Rad;
+        Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * orbitRadius;
+        Vector2 targetPos = (Vector2)orbitCenter.position + offset;
+
+        Vector2 outward = (targetPos - (Vector2)orbitCenter.position).normalized;
+        float targetAngle = Mathf.Atan2(outward.y, outward.x) * Mathf.Rad2Deg;
+
+        _rb.MovePosition(targetPos);
+        _rb.MoveRotation(targetAngle);
     }
 }

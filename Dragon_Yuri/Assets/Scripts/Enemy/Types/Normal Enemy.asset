@@ -20,7 +20,7 @@ MonoBehaviour:
   hotList: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
   maxHealth: 2
   speed: 1
-  strength: 2
-  defense: 2
+  strength: 1
+  defense: 1
   sprite: 1
   colour: {r: 1, g: 1, b: 1, a: 1}
