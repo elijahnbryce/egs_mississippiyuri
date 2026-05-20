@@ -24,3 +24,5 @@ MonoBehaviour:
   defense: 1
   sprite: 1
   colour: {r: 0, g: 0.53333336, b: 0.26365143, a: 0}
+  spriteSize: 1
+  _sprite: {fileID: -4350246913137973463, guid: 2341de79d9edc8f4a89038f73149f9da, type: 3}

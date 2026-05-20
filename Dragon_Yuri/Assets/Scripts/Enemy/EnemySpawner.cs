@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Wave> waves = new List<Wave>();
 
     [Header("End Game Settings")]
-    [SerializeField] private int endWaveIndex = -1; // -1 = use last wave
     [SerializeField] private string winSceneName = "WinScene";
 
     [Header("Spawn Settings")]
@@ -194,7 +193,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Game Won - loading scene");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
         SceneManager.LoadScene(winSceneName);
     }
