@@ -3623,11 +3623,9 @@ MonoBehaviour:
       count: 2
     - enemyType: {fileID: 11400000, guid: 428bb55c40686fb47b776e1991796c3a, type: 2}
       count: 2
-    - enemyType: {fileID: 11400000, guid: 41d9791e87025e64aae3f56980acebd2, type: 2}
-      count: 2
     spawnInterval: 1
     postWaveDelay: 2
-  endWaveIndex: 2
+  endWaveIndex: 1
   winSceneName: WinScene
   spawnPoints:
   - {fileID: 1415442307}
