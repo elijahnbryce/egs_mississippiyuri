@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public class EnemySpawnInfo
     {
-        public EnemyType enemyType;   
+        public EnemyType enemyType;
         public int count;
     }
 
@@ -27,42 +27,40 @@ public class EnemySpawner : MonoBehaviour
     public UnityEvent OnWaveComplete;
 
     [Header("Prefab")]
-    public GameObject enemyPrefab;     // Enemy prefab
+    public GameObject enemyPrefab;
 
     [Header("Waves")]
     [SerializeField] private List<Wave> waves = new List<Wave>();
+
+    [Header("End Game Settings")]
+    [SerializeField] private int endWaveIndex = -1; // -1 = use last wave
+    [SerializeField] private string winSceneName = "WinScene";
 
     [Header("Spawn Settings")]
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private Transform spawnedParent;
 
     [Header("Target")]
-    [SerializeField] private Entity target; // Player or base
+    [SerializeField] private Entity target;
 
     [Header("UI - Wave Display")]
     [SerializeField] private TextMeshProUGUI currentWaveText;
     [SerializeField] private TextMeshProUGUI totalWaveText;
 
     private int currentWaveIndex = 0;
+    private bool isSpawning;
+    private bool isWinTriggered;
+
     private List<Enemy> currentEnemies = new();
     public List<Enemy> CurrentEnemies => currentEnemies;
+
     public bool WaveCompleted => currentEnemies.Count <= 0;
 
     private void Awake()
     {
-        if (null == _Instance) _Instance = this;
+        if (_Instance == null) _Instance = this;
         else Destroy(gameObject);
     }
-
-    //private void OnEnable()
-    //{
-    //    OnWaveComplete.AddListener(ProcYarnSpinner);
-    //}
-
-    //private void OnDisable()
-    //{
-    //    OnWaveComplete.RemoveListener(ProcYarnSpinner);
-    //}
 
     private void Start()
     {
@@ -71,27 +69,22 @@ public class EnemySpawner : MonoBehaviour
 
     public void ProcWaveSpawner()
     {
-        Debug.Log("Yarn Spinner Called ProcWaveSpanwer() " + currentWaveIndex);
-        StartCoroutine(SpawnWaves());
-    }
+        if (isSpawning) return;
 
-    public void ProcYarnSpinner()
-    {
-        Debug.Log("Enemy Spawner Called Start Dialogue() " + currentWaveIndex);
-        GameManager._Instance.PlayDialogue(currentWaveIndex);
+        StartCoroutine(SpawnWaves());
     }
 
     private void InitializeWaveUI()
     {
         if (totalWaveText != null)
             totalWaveText.text = waves.Count.ToString();
-
-        Debug.Log($"Total Waves: {waves.Count}");
     }
 
     public IEnumerator SpawnWaves()
     {
-        if (currentWaveIndex < waves.Count)
+        isSpawning = true;
+
+        while (currentWaveIndex < waves.Count)
         {
             UpdateCurrentWaveUI();
 
@@ -110,11 +103,9 @@ public class EnemySpawner : MonoBehaviour
             OnWaveComplete?.Invoke();
         }
 
-        else
-        {
-            Debug.Log("All waves complete");
-            WinGame();
-        }
+        isSpawning = false;
+
+        TryEndGame();
     }
 
     private void UpdateCurrentWaveUI()
@@ -135,68 +126,76 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
     private void SpawnEnemy(EnemySpawnInfo info)
     {
-        if (spawnPoints.Length == 0)
-        {
-            Debug.LogWarning("No spawn points!");
-            return;
-        }
+        if (spawnPoints.Length == 0) return;
 
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject obj = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity, spawnedParent);
+        Transform spawnPoint =
+            spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+        GameObject obj = Instantiate(
+            enemyPrefab,
+            spawnPoint.position,
+            Quaternion.identity,
+            spawnedParent
+        );
 
         if (obj.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            enemy.enabled = false; //stop from running
+            enemy.enabled = false;
             StartCoroutine(InitializeEnemy(enemy, info));
             currentEnemies.Add(enemy);
         }
-        else
-        {
-            Debug.LogError("Enemy component missing!");
-        }
     }
-
 
     private IEnumerator InitializeEnemy(Enemy enemy, EnemySpawnInfo info)
     {
-        if (enemy == null)
-        {
-            Debug.LogError("Enemy is NULL");
+        if (enemy == null || target == null || info.enemyType == null)
             yield break;
-        }
-
-        if (target == null)
-        {
-            Debug.LogError("Target is NULL!");
-            yield break;
-        }
-
-        if (info.enemyType == null)
-        {
-            Debug.LogError("EnemyType is NULL!");
-            yield break;
-        }
 
         enemy.SetTarget(target);
+
         enemy.enabled = true;
+
         yield return null;
+
         enemy.Initialize(info.enemyType);
-        Debug.Log($"Enemy initialized: {info.enemyType.name}");
     }
 
     public void DespawnEnemy(Enemy enemy)
     {
-        Debug.Log("Enemy died handled in GameManage " +  enemy.name);
+        if (enemy == null) return;
+
         currentEnemies.Remove(enemy);
+
         Destroy(enemy.gameObject);
+
+        TryEndGame();
     }
-    void WinGame()
+
+    private void TryEndGame()
     {
-        Debug.Log("Game Won");
-        SceneManager.LoadScene("WinScene");
-        
+        if (isWinTriggered) return;
+
+        bool lastWaveFinished =
+            currentWaveIndex >= waves.Count;
+
+        bool noEnemiesLeft =
+            currentEnemies.Count == 0;
+
+        if (lastWaveFinished && noEnemiesLeft)
+        {
+            isWinTriggered = true;
+            StartCoroutine(WinRoutine());
+        }
+    }
+
+    private IEnumerator WinRoutine()
+    {
+        Debug.Log("Game Won - loading scene");
+
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(winSceneName);
     }
 }

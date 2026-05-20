@@ -1,5 +1,3 @@
-using Assets.Scripts.Enemy;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +14,7 @@ namespace Assets.Scripts.Enemy
             get { return type; }
             private set
             {
-                if (type != value) SetType(value); 
+                if (type != value) SetType(value);
             }
         }
 
@@ -139,7 +137,8 @@ namespace Assets.Scripts.Enemy
             return false;
         }
 
-        protected void InteractWithElement(EnemyType.Element element) => Type = element switch {
+        protected void InteractWithElement(EnemyType.Element element) => Type = element switch
+        {
             EnemyType.Element.Water => Type.wetList,
             EnemyType.Element.Fire => Type.wetList,
             _ => Type
@@ -168,7 +167,8 @@ namespace Assets.Scripts.Enemy
             TakeDamage(projectile.dmg, element);
         }
 
-        public override void Die() {
+        public override void Die()
+        {
             Debug.Log("Death handled by ENEMY script");
             EnemySpawner._Instance.DespawnEnemy(this);
         }
